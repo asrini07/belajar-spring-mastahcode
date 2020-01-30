@@ -14,6 +14,10 @@ public class Mahasiswa {
     private String jurusan;
     private String nim;
 
+    @Version
+    @Column(name = "optVersion", columnDefinition = "integer DEFAULT 0")
+    private Integer version;
+
     public Integer getId() {
         return id;
     }

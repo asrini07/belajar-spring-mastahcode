@@ -5,6 +5,7 @@ import com.example.demo.services.MahasiswaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,10 +33,16 @@ public class MahasiswaController {
         return "formMahasiswa";
     }
 
-    @RequestMapping(value = "mahasiswa/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/mahasiswa/create", method = RequestMethod.POST)
     public String simpanDataMahasiswa(Model model, Mahasiswa mahasiswa){
         model.addAttribute("mahasiswa", mahasiswaService.saveOrUpdate(mahasiswa));
         return "redirect:/mahasiswa";
+    }
+
+    @RequestMapping(value = "/mahasiswa/edit/{id}", method = RequestMethod.GET)
+    public String editData(@PathVariable Integer id, Model model) {
+        model.addAttribute("mahasiswa", mahasiswaService.getIdMahasiswa(id));
+        return "formMahasiswa";
     }
 
     

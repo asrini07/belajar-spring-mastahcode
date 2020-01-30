@@ -7,4 +7,5 @@ public interface MahasiswaService {
 
     List <Mahasiswa> listMahasiswa();
     Mahasiswa saveOrUpdate(Mahasiswa mahasiswa);
+    Mahasiswa getIdMahasiswa(Integer id);
 } 

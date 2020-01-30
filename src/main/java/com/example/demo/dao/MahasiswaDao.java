@@ -35,10 +35,10 @@ public class MahasiswaDao implements MahasiswaService{
         return saved;
     }
 
-    // @Override
-    // public Mahasiswa getIdMahasiswa(Integer id){
-    //     EntityManager em = emf.createEntityManager();
-    //     return em.find(Mahasiswa.class, id);
-    // }
+    @Override
+    public Mahasiswa getIdMahasiswa(Integer id){
+        EntityManager em = emf.createEntityManager();
+        return em.find(Mahasiswa.class, id);
+    }
 
 }
