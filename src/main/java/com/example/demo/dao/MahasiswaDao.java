@@ -41,4 +41,12 @@ public class MahasiswaDao implements MahasiswaService{
         return em.find(Mahasiswa.class, id);
     }
 
+    @Override
+    public void hapus(Integer id) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.remove(em.find(Mahasiswa.class, id));
+        em.getTransaction().commit();
+    }
+
 }
