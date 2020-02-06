@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.Mahasiswa;
 //import com.example.demo.model.Mahasiswa;
 import com.example.demo.services.MahasiswaService;
 
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 //import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,8 +42,17 @@ public class MahasiswaApiController {
     @RequestMapping(value="/mahasiswaapi/{id}", method=RequestMethod.DELETE)
         public ResponseEntity<Object> deleteMahasiswa(@PathVariable("id") Integer id) {
         mahasiswaService.hapus(id);
-        return new ResponseEntity<>("Product is deleted successsfully",
+        return new ResponseEntity<>("Mahasiswa is deleted successsfully",
         HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/mahasiswaapi", method=RequestMethod.POST)
+    public ResponseEntity<Object> saveOrUpdateMahasiswa(Model model, Mahasiswa mahasiswa) {
+        mahasiswaService.saveOrUpdate(mahasiswa);
+        return new ResponseEntity<>("Mahasiswa is created successsfully",
+        HttpStatus.OK);
+    }
+
+    
     
 }
